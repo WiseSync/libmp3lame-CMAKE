@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 
 project (mp3lame)
 
@@ -34,6 +34,8 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libmp3lame)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/mpglib)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 add_library(${PROJECT_NAME} STATIC ${SOURCE_LIB})
+
+target_compile_options(${PROJECT_NAME} PRIVATE -Wno-shift-negative-value -Wno-absolute-value -Wno-array-parameter -Wno-tautological-pointer-compare -Wno-unused-but-set-variable -Wno-unused-const-variable)
 
 target_include_directories(${PROJECT_NAME} 
 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
